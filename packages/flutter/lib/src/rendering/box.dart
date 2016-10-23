@@ -1117,7 +1117,7 @@ abstract class RenderBox extends RenderObject {
         );
       }
       // verify that the size is not infinite
-      if (_size.isInfinite) {
+      if (!_size.isFinite) {
         StringBuffer information = new StringBuffer();
         if (!constraints.hasBoundedWidth) {
           RenderBox node = this;
@@ -1242,7 +1242,7 @@ abstract class RenderBox extends RenderObject {
   void performResize() {
     // default behavior for subclasses that have sizedByParent = true
     size = constraints.constrain(Size.zero);
-    assert(!size.isInfinite);
+    assert(size.isFinite);
   }
 
   @override
